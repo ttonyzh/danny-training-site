@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Elite soccer training with D1 athlete Danny. Private and small-group sessions for youth players ages 8–18.">
+  <title>Danny | Elite Soccer Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <a href="#home" class="nav__logo">
+        <span class="nav__logo-name">DANNY</span>
+        <span class="nav__logo-tag">ELITE TRAINING</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about"        class="nav__link">About</a></li>
+        <li><a href="#accolades"    class="nav__link">Accolades</a></li>
+        <li><a href="#services"     class="nav__link">Services</a></li>
+        <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+        <li><a href="#signup"       class="nav__link nav__link--cta">Book Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="hero__badge animate-fadeup">
+        <span class="badge">D1 ATHLETE · MLS NEXT</span>
+      </div>
+      <h1 class="hero__title animate-fadeup delay-1">
+        Train Like An<br>
+        <span class="text-accent">Elite Player</span>
+      </h1>
+      <p class="hero__subtitle animate-fadeup delay-2">
+        Develop the skills, game IQ, and fitness to compete at the highest level.<br>
+        Training built by a D1 athlete with MLS Next experience.
+      </p>
+      <div class="hero__actions animate-fadeup delay-3">
+        <a href="#signup"   class="btn btn--primary btn--lg">Sign Up for Training</a>
+        <a href="#services" class="btn btn--outline  btn--lg">View Services</a>
+      </div>
+      <div class="hero__stats animate-fadeup delay-4">
+        <div class="hero__stat">
+          <span class="hero__stat-number">100+</span>
+          <span class="hero__stat-label">Athletes Trained</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">5+</span>
+          <span class="hero__stat-label">Years Experience</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number">D1</span>
+          <span class="hero__stat-label">Division I Athlete</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about__grid">
+
+        <div class="about__visual animate-left">
+          <div class="about__image-wrapper">
+            <div class="about__image-placeholder">
+              <span>📸</span>
+              <p>Add Your Photo Here</p>
+            </div>
+            <div class="about__image-glow"></div>
+          </div>
+          <div class="about__credentials">
+            <div class="credential">
+              <span class="credential__icon">⚽</span>
+              <span>D1 College Athlete</span>
+            </div>
+            <div class="credential">
+              <span class="credential__icon">🏆</span>
+              <span>MLS Next Player</span>
+            </div>
+            <div class="credential">
+              <span class="credential__icon">🎯</span>
+              <span>Team Captain</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about__content animate-right">
+          <div class="section__label">ABOUT THE TRAINER</div>
+          <h2 class="section__title">From the Pitch to<br><span class="text-accent">Your Development</span></h2>
+          <p class="about__bio">
+            I'm Danny — a current Division I collegiate soccer player with years of high-level competitive experience,
+            including time in MLS Next, one of the nation's premier youth development leagues.
+          </p>
+          <p class="about__bio">
+            My approach to training isn't just about kicking balls — it's about building complete players.
+            I work on technical fundamentals, tactical awareness, physical conditioning, and the mental edge
+            that separates good players from elite ones.
+          </p>
+          <p class="about__bio">
+            Whether you're just starting out or working toward a college scholarship,
+            I'll meet you where you are and push you to where you need to be.
+          </p>
+          <div class="about__highlights">
+            <div class="highlight">
+              <div class="highlight__number text-accent">100+</div>
+              <div class="highlight__text">Players trained across all skill levels</div>
+            </div>
+            <div class="highlight">
+              <div class="highlight__number text-accent">5+</div>
+              <div class="highlight__text">Years of competitive & coaching experience</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCOLADES ===== -->
+  <section class="accolades section section--dark" id="accolades">
+    <div class="container">
+      <div class="section__header animate-fadeup">
+        <div class="section__label">CREDENTIALS & ACHIEVEMENTS</div>
+        <h2 class="section__title">Trained at the <span class="text-accent">Highest Level</span></h2>
+        <p class="section__desc">A track record of excellence on and off the field.</p>
+      </div>
+      <div class="accolades__grid">
+        <div class="accolade-card animate-fadeup delay-1">
+          <div class="accolade-card__icon">🎓</div>
+          <h3 class="accolade-card__title">Division I Athlete</h3>
+          <p class="accolade-card__desc">Currently competing at the NCAA Division I level — the highest tier of collegiate soccer in the United States.</p>
+        </div>
+        <div class="accolade-card animate-fadeup delay-2">
+          <div class="accolade-card__icon">⚡</div>
+          <h3 class="accolade-card__title">MLS Next Experience</h3>
+          <p class="accolade-card__desc">Played in MLS Next, the elite youth development pathway that feeds directly into professional and college soccer.</p>
+        </div>
+        <div class="accolade-card animate-fadeup delay-3">
+          <div class="accolade-card__icon">🏅</div>
+          <h3 class="accolade-card__title">Team Captain</h3>
+          <p class="accolade-card__desc">Named captain at multiple levels — demonstrating leadership, communication, and competitive character.</p>
+        </div>
+        <div class="accolade-card animate-fadeup delay-1">
+          <div class="accolade-card__icon">🏆</div>
+          <h3 class="accolade-card__title">State Champion</h3>
+          <p class="accolade-card__desc">State championship experience competing at the highest levels of youth and prep soccer nationwide.</p>
+        </div>
+        <div class="accolade-card animate-fadeup delay-2">
+          <div class="accolade-card__icon">⭐</div>
+          <h3 class="accolade-card__title">All-Conference Honors</h3>
+          <p class="accolade-card__desc">Recognized for individual excellence with all-conference selection at the collegiate level.</p>
+        </div>
+        <div class="accolade-card animate-fadeup delay-3">
+          <div class="accolade-card__icon">📈</div>
+          <h3 class="accolade-card__title">Player Development</h3>
+          <p class="accolade-card__desc">Over 100 athletes trained — from beginners to elite club players — with measurable improvements in skill and game IQ.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <div class="section__header animate-fadeup">
+        <div class="section__label">TRAINING PROGRAMS</div>
+        <h2 class="section__title">Choose Your <span class="text-accent">Path</span></h2>
+        <p class="section__desc">Every session is intentional. Every rep has a purpose.</p>
+      </div>
+      <div class="services__grid">
+
+        <div class="service-card animate-fadeup delay-1">
+          <div class="service-card__header">
+            <div class="service-card__icon">👤</div>
+            <div class="service-card__badge">Most Popular</div>
+          </div>
+          <h3 class="service-card__title">Private Training</h3>
+          <p class="service-card__desc">One-on-one sessions fully customized to your position, weaknesses, and goals. Maximum attention, maximum improvement.</p>
+          <ul class="service-card__features">
+            <li>Personalized training plan</li>
+            <li>Position-specific drills</li>
+            <li>Video analysis available</li>
+            <li>60–90 minute sessions</li>
+          </ul>
+          <a href="#signup" class="btn btn--primary">Book a Session</a>
+        </div>
+
+        <div class="service-card service-card--featured animate-fadeup delay-2">
+          <div class="service-card__header">
+            <div class="service-card__icon">👥</div>
+            <div class="service-card__badge service-card__badge--accent">Best Value</div>
+          </div>
+          <h3 class="service-card__title">Small Group Sessions</h3>
+          <p class="service-card__desc">Train with 2–4 players at a similar level. Competitive environment, team dynamics, and elite coaching.</p>
+          <ul class="service-card__features">
+            <li>2–4 players per session</li>
+            <li>Game-like scenarios</li>
+            <li>Competitive drills & small-sided games</li>
+            <li>90-minute sessions</li>
+          </ul>
+          <a href="#signup" class="btn btn--primary">Book a Session</a>
+        </div>
+
+        <div class="service-card animate-fadeup delay-3">
+          <div class="service-card__header">
+            <div class="service-card__icon">🔥</div>
+            <div class="service-card__badge">Intensive</div>
+          </div>
+          <h3 class="service-card__title">Pre-Season Intensive</h3>
+          <p class="service-card__desc">Multi-week programs designed around your tryout or season start. Get your sharpest when it counts most.</p>
+          <ul class="service-card__features">
+            <li>4–8 week structured programs</li>
+            <li>Fitness & conditioning focus</li>
+            <li>Technical + tactical development</li>
+            <li>Progress tracking & reporting</li>
+          </ul>
+          <a href="#signup" class="btn btn--primary">Book a Session</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ===== -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__content animate-fadeup">
+        <h2 class="cta-banner__title">Ready to Elevate Your Game?</h2>
+        <p class="cta-banner__subtitle">Spots are limited. Serious players only.</p>
+        <a href="#signup" class="btn btn--white btn--lg">Sign Up Now &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="testimonials section section--dark" id="testimonials">
+    <div class="container">
+      <div class="section__header animate-fadeup">
+        <div class="section__label">WHAT PLAYERS SAY</div>
+        <h2 class="section__title">Real Results, Real <span class="text-accent">Players</span></h2>
+      </div>
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card animate-fadeup delay-1">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">"Danny completely transformed my first touch and weak foot. Three months in and I made varsity as a freshman. The training is intense but the results are real."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">JR</div>
+            <div>
+              <div class="testimonial-card__name">Jake R.</div>
+              <div class="testimonial-card__info">Varsity Midfielder, Age 15</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-fadeup delay-2">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">"My son went from barely getting minutes to starting every game. Danny understands the game at a level most trainers don't — he teaches positioning, not just skills."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">SM</div>
+            <div>
+              <div class="testimonial-card__name">Sarah M.</div>
+              <div class="testimonial-card__info">Parent of U14 Club Player</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card animate-fadeup delay-3">
+          <div class="testimonial-card__stars">★★★★★</div>
+          <p class="testimonial-card__quote">"I trained with Danny before my high school tryout and made the team. His small group sessions were competitive and game-realistic. Highly recommend."</p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar">AT</div>
+            <div>
+              <div class="testimonial-card__name">Alex T.</div>
+              <div class="testimonial-card__info">JV Forward, Age 14</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SIGN UP ===== -->
+  <section class="signup section" id="signup">
+    <div class="container">
+      <div class="signup__grid">
+
+        <div class="signup__info animate-left">
+          <div class="section__label">GET STARTED</div>
+          <h2 class="section__title">Book Your <span class="text-accent">First Session</span></h2>
+          <p class="signup__desc">
+            Fill out the form and I'll get back to you within 24 hours to schedule your first session. Let's get to work.
+          </p>
+          <div class="signup__contact">
+            <div class="contact-item">
+              <span class="contact-item__icon">📍</span>
+              <span>[Your City, State]</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon">📧</span>
+              <span>danny@elitetraining.com</span>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon">📱</span>
+              <span>@danny_trains on Instagram</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup__form-wrapper animate-right">
+          <form class="signup__form" id="signupForm" novalidate>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">First Name</label>
+                <input type="text" class="form__input" placeholder="John" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Last Name</label>
+                <input type="text" class="form__input" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Email Address</label>
+              <input type="email" class="form__input" placeholder="john@example.com" required>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Phone Number</label>
+              <input type="tel" class="form__input" placeholder="(555) 123-4567">
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">Player Age</label>
+                <input type="number" class="form__input" placeholder="14" min="6" max="22">
+              </div>
+              <div class="form__group">
+                <label class="form__label">Skill Level</label>
+                <select class="form__input form__select" required>
+                  <option value="">Select level…</option>
+                  <option>Beginner (Recreational)</option>
+                  <option>Intermediate (Club)</option>
+                  <option>Advanced (Elite Club / HS Varsity)</option>
+                  <option>Elite (State / ODP Level)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Training Interest</label>
+              <select class="form__input form__select" required>
+                <option value="">Select program…</option>
+                <option>Private Training (1-on-1)</option>
+                <option>Small Group Session (2–4 players)</option>
+                <option>Pre-Season Intensive Program</option>
+                <option>Not sure yet — tell me more</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Anything else I should know?</label>
+              <textarea class="form__input form__textarea" placeholder="Goals, position, current team, availability…" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full btn--lg" id="submitBtn">
+              Send My Request &rarr;
+            </button>
+            <p class="form__disclaimer">I'll respond within 24 hours. No spam, ever.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <div class="footer__logo">DANNY<span class="text-accent">.</span></div>
+          <p class="footer__tagline">Elevating the next generation of soccer players through elite, high-intensity training.</p>
+          <div class="footer__socials">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="X / Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.74a8.18 8.18 0 004.78 1.53V6.82a4.85 4.85 0 01-1.01-.13z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">Quick Links</h4>
+            <ul>
+              <li><a href="#about">About Danny</a></li>
+              <li><a href="#accolades">Accolades</a></li>
+              <li><a href="#services">Training Programs</a></li>
+              <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">Training</h4>
+            <ul>
+              <li><a href="#signup">Private Sessions</a></li>
+              <li><a href="#signup">Small Groups</a></li>
+              <li><a href="#signup">Pre-Season Intensive</a></li>
+              <li><a href="#signup">Book a Session</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2024 Danny Elite Training. All rights reserved.</p>
+        <p>Built for elite athletes, by an elite athlete.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
