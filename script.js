@@ -1,3 +1,70 @@
+// === CAROUSEL ===
+(function () {
+  const track   = document.getElementById('carouselTrack');
+  const slides  = track.querySelectorAll('.carousel__slide');
+  const dots    = document.querySelectorAll('.carousel__dot');
+  const prev    = document.getElementById('carouselPrev');
+  const next    = document.getElementById('carouselNext');
+  const total   = slides.length;
+  let current   = 0;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+
+    // Pause all videos, play current if it's a video
+    track.querySelectorAll('video').forEach(v => v.pause());
+    const activeVideo = slides[current].querySelector('video');
+    if (activeVideo) activeVideo.play();
+  }
+
+  prev.addEventListener('click', () => goTo(current - 1));
+  next.addEventListener('click', () => goTo(current + 1));
+  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
+
+  // Keyboard arrows
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  goTo(current - 1);
+    if (e.key === 'ArrowRight') goTo(current + 1);
+  });
+
+  // Touch / trackpad swipe
+  let startX = 0, startY = 0, isDragging = false;
+
+  track.addEventListener('pointerdown', e => {
+    startX = e.clientX; startY = e.clientY;
+    isDragging = true;
+    track.classList.add('dragging');
+    track.setPointerCapture(e.pointerId);
+  });
+
+  track.addEventListener('pointerup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.classList.remove('dragging');
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      goTo(dx < 0 ? current + 1 : current - 1);
+    }
+  });
+
+  // Trackpad horizontal scroll → carousel
+  const panel = document.getElementById('carousel');
+  let scrollBuffer = 0;
+  panel.addEventListener('wheel', e => {
+    if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return; // vertical scroll, ignore
+    e.preventDefault();
+    scrollBuffer += e.deltaX;
+    if (scrollBuffer > 60)  { goTo(current + 1); scrollBuffer = 0; }
+    if (scrollBuffer < -60) { goTo(current - 1); scrollBuffer = 0; }
+  }, { passive: false });
+
+  // Init — play video if it's the first slide
+  goTo(0);
+})();
+
 // === NAVIGATION: scroll shadow + sticky behavior ===
 const nav = document.getElementById('nav');
 

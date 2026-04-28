@@ -15,10 +15,12 @@
   <!-- ===== NAVIGATION ===== -->
   <nav class="nav" id="nav">
     <div class="nav__container">
-      <a href="#home" class="nav__logo">
-        <span class="nav__logo-name">DANNY</span>
-        <span class="nav__logo-tag">ELITE TRAINING</span>
-      </a>
+      <div class="nav__leagues">
+        <div class="league-badge"><img src="brand_assets/logo-mls-next.png" alt="MLS Next"></div>
+        <div class="league-badge"><img src="brand_assets/logo-usys.png"     alt="USYS National League"></div>
+        <div class="league-badge"><img src="brand_assets/logo-nal.png"      alt="NAL"></div>
+        <div class="league-badge"><img src="brand_assets/logo-ncaa.png"     alt="NCAA"></div>
+      </div>
       <ul class="nav__links" id="navLinks">
         <li><a href="#about"        class="nav__link">About</a></li>
         <li><a href="#accolades"    class="nav__link">Accolades</a></li>
@@ -34,43 +36,71 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <div class="hero__bg"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <div class="hero__badge animate-fadeup">
-        <span class="badge">D1 ATHLETE · MLS NEXT</span>
-      </div>
-      <h1 class="hero__title animate-fadeup delay-1">
-        Train Like An<br>
-        <span class="text-accent">Elite Player</span>
-      </h1>
-      <p class="hero__subtitle animate-fadeup delay-2">
-        Develop the skills, game IQ, and fitness to compete at the highest level.<br>
-        Training built by a D1 athlete with MLS Next experience.
-      </p>
-      <div class="hero__actions animate-fadeup delay-3">
-        <a href="#signup"   class="btn btn--primary btn--lg">Sign Up for Training</a>
-        <a href="#services" class="btn btn--outline  btn--lg">View Services</a>
-      </div>
-      <div class="hero__stats animate-fadeup delay-4">
-        <div class="hero__stat">
-          <span class="hero__stat-number">100+</span>
-          <span class="hero__stat-label">Athletes Trained</span>
+
+    <!-- LEFT: Carousel -->
+    <div class="hero__carousel-panel">
+      <div class="carousel" id="carousel">
+
+        <div class="carousel__track" id="carouselTrack">
+
+          <!-- Slide 1: tonyKid photo -->
+          <div class="carousel__slide">
+            <img src="brand_assets/tonyKid.JPG" alt="Danny as a kid" class="carousel__media">
+          </div>
+
+          <!-- Slide 2: Training video -->
+          <div class="carousel__slide">
+            <video class="carousel__media" autoplay muted loop playsinline>
+              <source src="brand_assets/movie1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <!-- Slide 3: CMU photo -->
+          <div class="carousel__slide">
+            <img src="brand_assets/tonyCMUphoto.jpg" alt="Danny at CMU" class="carousel__media">
+          </div>
+
         </div>
-        <div class="hero__stat-divider"></div>
-        <div class="hero__stat">
-          <span class="hero__stat-number">5+</span>
-          <span class="hero__stat-label">Years Experience</span>
+
+        <!-- Arrows -->
+        <button class="carousel__btn carousel__btn--prev" id="carouselPrev" aria-label="Previous">&#8592;</button>
+        <button class="carousel__btn carousel__btn--next" id="carouselNext" aria-label="Next">&#8594;</button>
+
+        <!-- Dots -->
+        <div class="carousel__dots" id="carouselDots">
+          <button class="carousel__dot active" data-index="0"></button>
+          <button class="carousel__dot" data-index="1"></button>
+          <button class="carousel__dot" data-index="2"></button>
         </div>
-        <div class="hero__stat-divider"></div>
-        <div class="hero__stat">
-          <span class="hero__stat-number">D1</span>
-          <span class="hero__stat-label">Division I Athlete</span>
-        </div>
+
       </div>
+      <div class="hero__video-edge"></div>
     </div>
-    <div class="hero__scroll-indicator">
-      <div class="scroll-dot"></div>
+
+    <!-- RIGHT: Photo + Intro -->
+    <div class="hero__right-panel">
+
+      <div class="hero__photo-panel">
+        <img src="brand_assets/tonyPoo.jpg" alt="Danny" class="hero__photo">
+      </div>
+
+      <div class="hero__intro-panel">
+        <div class="hero__badge animate-fadeup">
+          <span class="badge">D1 ATHLETE · MLS NEXT</span>
+        </div>
+        <h1 class="hero__title animate-fadeup delay-1">
+          Train Like An<br><span class="text-accent">Elite Player</span>
+        </h1>
+        <p class="hero__subtitle animate-fadeup delay-2">
+          Develop the skills, game IQ, and fitness to compete at the highest level.
+          Training built by a D1 athlete with MLS Next experience.
+        </p>
+        <div class="hero__actions animate-fadeup delay-3">
+          <a href="#signup"   class="btn btn--primary btn--lg">Sign Up for Training</a>
+          <a href="#services" class="btn btn--outline  btn--lg">View Services</a>
+        </div>
+      </div>
+
     </div>
   </section>
 
