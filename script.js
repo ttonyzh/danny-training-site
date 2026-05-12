@@ -117,34 +117,38 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const form      = document.getElementById('signupForm');
 const submitBtn = document.getElementById('submitBtn');
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
 
   // Basic validation
   const inputs = form.querySelectorAll('[required]');
   let valid = true;
   inputs.forEach(input => {
-    if (!input.value.trim()) { input.style.borderColor = '#EF4444'; valid = false; }
+    if (!input.value.trim()) { input.style.borderColor = '#C0392B'; valid = false; }
     else input.style.borderColor = '';
   });
   if (!valid) return;
 
-  // Simulate async submit
   const original = submitBtn.innerHTML;
   submitBtn.innerHTML = 'Sending…';
   submitBtn.disabled  = true;
 
-  setTimeout(() => {
-    submitBtn.innerHTML = '✓ Request Sent!';
-    submitBtn.style.background = 'var(--green-dark)';
+  const data = new FormData(form);
 
-    setTimeout(() => {
-      submitBtn.innerHTML       = original;
-      submitBtn.disabled        = false;
-      submitBtn.style.background = '';
-      form.reset();
-    }, 3200);
-  }, 1100);
+  try {
+    const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+    const json = await res.json();
+
+    if (json.success) {
+      window.location.href = 'thanks.html';
+    } else {
+      submitBtn.innerHTML = 'Something went wrong — try again';
+      submitBtn.disabled  = false;
+    }
+  } catch {
+    submitBtn.innerHTML = 'Network error — try again';
+    submitBtn.disabled  = false;
+  }
 });
 
 // Remove red border on re-type

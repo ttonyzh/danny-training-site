@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Sent | Danny Elite Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .thanks-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 24px;
+      background: var(--bg);
+    }
+
+    .thanks-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--green-bg);
+      border: 2px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 28px;
+      box-shadow: var(--shadow-g);
+    }
+
+    .thanks-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .thanks-subtitle {
+      color: var(--txt2);
+      font-size: 1.1rem;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .thanks-contact-box {
+      background: var(--card);
+      border: 1px solid var(--border-g);
+      border-radius: var(--rl);
+      padding: 36px 40px;
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto 36px;
+      box-shadow: var(--shadow-g);
+    }
+
+    .thanks-contact-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    .thanks-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .thanks-contact-item:last-child {
+      border-bottom: none;
+    }
+
+    .thanks-contact-item .icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .thanks-contact-item a {
+      color: var(--txt);
+      font-weight: 500;
+      transition: color var(--t) var(--ease);
+    }
+
+    .thanks-contact-item a:hover {
+      color: var(--green);
+    }
+
+    .thanks-urgent {
+      background: var(--green-bg);
+      border: 1px solid var(--border-g);
+      border-radius: var(--r);
+      padding: 18px 24px;
+      max-width: 480px;
+      width: 100%;
+      margin: 0 auto 40px;
+      color: var(--txt2);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .thanks-urgent strong {
+      color: var(--green);
+    }
+
+    .thanks-back {
+      color: var(--txt3);
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .thanks-back a {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .thanks-back a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thanks-page">
+
+    <div class="thanks-icon">&#10003;</div>
+
+    <h1 class="thanks-title">
+      You're All Set<br><span class="text-accent">Request Sent!</span>
+    </h1>
+
+    <p class="thanks-subtitle">
+      Thanks for reaching out. I'll get back to you within 24 hours to get your first session scheduled. Let's get to work.
+    </p>
+
+    <div class="thanks-contact-box">
+      <h3>Contact Info</h3>
+      <div class="thanks-contact-item">
+        <span class="icon">📍</span>
+        <span>Brookline, MA</span>
+      </div>
+      <div class="thanks-contact-item">
+        <span class="icon">📧</span>
+        <a href="mailto:danny1on1Training@gmail.com">danny1on1Training@gmail.com</a>
+      </div>
+      <div class="thanks-contact-item">
+        <span class="icon">📱</span>
+        <a href="tel:6175823879">617-582-3879</a>
+      </div>
+    </div>
+
+    <div class="thanks-urgent">
+      <strong>Have an urgent question?</strong> Feel free to call or email directly — I'm happy to chat before we even get to the first session.
+    </div>
+
+    <p class="thanks-back">
+      <a href="index.html">&larr; Back to the main site</a>
+    </p>
+
+  </div>
+
+</body>
+</html>
