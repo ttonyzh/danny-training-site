@@ -124,7 +124,7 @@ form.addEventListener('submit', async e => {
   const inputs = form.querySelectorAll('[required]');
   let valid = true;
   inputs.forEach(input => {
-    if (!input.value.trim()) { input.style.borderColor = '#C0392B'; valid = false; }
+    if (!input.value.trim()) { input.style.borderColor = '#22C55E'; valid = false; }
     else input.style.borderColor = '';
   });
   if (!valid) return;
