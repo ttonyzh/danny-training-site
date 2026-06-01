@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet Danny's elite training partners — Bobby and Stefan, competing at the highest levels of club, national team, and professional soccer.">
+  <title>My Team | Danny Elite Training</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── TEAM HERO ─────────────────────────────── */
+    .team-hero {
+      padding: 160px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 55% at 50% 0%, rgba(34,197,94,0.12) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .team-hero__content { position: relative; }
+
+    .team-hero .animate-fadeup {
+      animation: heroFadeUp 0.85s cubic-bezier(0.4,0,0.2,1) forwards;
+      opacity: 0;
+    }
+    .team-hero .delay-1 { animation-delay: 0.10s; }
+    .team-hero .delay-2 { animation-delay: 0.30s; }
+    .team-hero .delay-3 { animation-delay: 0.48s; }
+
+    /* ── TEAM SECTION ───────────────────────────── */
+    .team-section {
+      padding: 0 0 100px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    /* ── PLAYER CARD ─────────────────────────────── */
+    .player-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color var(--t) var(--ease),
+                  transform var(--t) var(--ease),
+                  box-shadow var(--t) var(--ease);
+    }
+
+    .player-card:hover {
+      border-color: var(--border-g);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-g);
+    }
+
+    .player-card__header {
+      padding: 36px 36px 28px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(34,197,94,0.07) 0%, transparent 100%);
+      position: relative;
+    }
+
+    .player-card__header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green), transparent);
+    }
+
+    .player-card__top {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .player-card__avatar {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #000;
+      flex-shrink: 0;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 28px var(--green-glow);
+    }
+
+    .player-card__name {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .player-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .player-tag {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: var(--green);
+      background: var(--green-bg);
+      border: 1px solid var(--border-g);
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+
+    /* ── CREDENTIALS LIST ────────────────────────── */
+    .player-card__body {
+      padding: 28px 36px 36px;
+    }
+
+    .creds-label {
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--txt3);
+      margin-bottom: 14px;
+    }
+
+    .creds-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cred-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color var(--t), background var(--t);
+      cursor: default;
+    }
+
+    .cred-item:hover {
+      border-color: rgba(34,197,94,0.22);
+      background: rgba(34,197,94,0.05);
+    }
+
+    .cred-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--green-bg);
+      border: 1px solid var(--border-g);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .cred-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--txt);
+      line-height: 1.4;
+      margin-bottom: 3px;
+    }
+
+    .cred-sub {
+      font-size: 0.79rem;
+      color: var(--txt3);
+      line-height: 1.5;
+    }
+
+    /* ── NAV ACTIVE STATE ────────────────────────── */
+    .nav__link--active {
+      color: var(--green) !important;
+      background: var(--green-bg);
+    }
+
+    /* ── CTA STRIP ───────────────────────────────── */
+    .team-cta {
+      padding: 80px 0 100px;
+      text-align: center;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 100% at 50% 50%, rgba(34,197,94,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .team-cta__content { position: relative; }
+
+    /* ── RESPONSIVE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .team-hero { padding: 130px 0 60px; }
+      .player-card__header { padding: 24px 22px 20px; }
+      .player-card__body { padding: 20px 22px 28px; }
+      .player-card__name { font-size: 1.5rem; }
+      .player-card__avatar { width: 58px; height: 58px; font-size: 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="nav" id="nav">
+    <div class="nav__container">
+      <div class="nav__leagues">
+        <div class="league-badge"><img src="brand_assets/logo-mls-next.png" alt="MLS Next"></div>
+        <div class="league-badge"><img src="brand_assets/USL-picture.png"   alt="USL"></div>
+        <div class="league-badge"><img src="brand_assets/logo-ncaa.png"     alt="NCAA"></div>
+      </div>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="index.html#about"        class="nav__link">About</a></li>
+        <li><a href="index.html#accolades"    class="nav__link">Accolades</a></li>
+        <li><a href="index.html#services"     class="nav__link">Services</a></li>
+        <li><a href="index.html#testimonials" class="nav__link">Testimonials</a></li>
+        <li><a href="team.html"               class="nav__link nav__link--active">My Team</a></li>
+        <li><a href="index.html#signup"       class="nav__link nav__link--cta">Book Now</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="team-hero">
+    <div class="container">
+      <div class="team-hero__content">
+        <div class="section__label animate-fadeup delay-1">THE TEAM</div>
+        <h1 class="section__title animate-fadeup delay-2" style="font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 20px;">
+          Who I Train With
+        </h1>
+        <p class="section__desc animate-fadeup delay-3" style="margin: 0 auto; font-size: 1.05rem; max-width: 520px;">
+          My training partners compete at the highest levels — national teams, professional academies, and D1 programs. This is the environment you're stepping into.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM GRID ===== -->
+  <section class="team-section">
+    <div class="container">
+      <div class="team-grid">
+
+        <!-- ═══ BOBBY ═══════════════════════════════ -->
+        <div class="player-card animate-fadeup delay-1">
+          <div class="player-card__header">
+            <div class="player-card__top">
+              <div class="player-card__avatar">B</div>
+              <div>
+                <h2 class="player-card__name">Bobby</h2>
+                <div class="player-card__tags">
+                  <span class="player-tag">MLS Next</span>
+                  <span class="player-tag">National Team</span>
+                  <span class="player-tag">D1 Recruit</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="player-card__body">
+            <div class="creds-label">Credentials</div>
+            <div class="creds-list">
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Seacoast United U17 — MLS Next</div>
+                  <div class="cred-sub">Starter for one of New England's top youth programs in the nation's premier development league</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Bulgaria U17 Youth National Team</div>
+                  <div class="cred-sub">Internationally selected to represent Bulgaria at the highest youth international level</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Multiple Top D1 Official Visits</div>
+                  <div class="cred-sub">Recruited by and visiting elite NCAA Division I programs across the country</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ STEFAN ══════════════════════════════ -->
+        <div class="player-card animate-fadeup delay-2">
+          <div class="player-card__header">
+            <div class="player-card__top">
+              <div class="player-card__avatar">S</div>
+              <div>
+                <h2 class="player-card__name">Stefan</h2>
+                <div class="player-card__tags">
+                  <span class="player-tag">USL2</span>
+                  <span class="player-tag">La Liga Academy</span>
+                  <span class="player-tag">MLS Next</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="player-card__body">
+            <div class="creds-label">Credentials</div>
+            <div class="creds-list">
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Marcet Football Academy — Barcelona, Spain</div>
+                  <div class="cred-sub">Trained at one of Spain's most respected residential football academies</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">La Liga Academy — A-Team Appearances</div>
+                  <div class="cred-sub">Competed against FC Barcelona A · Real Betis A · Real Sociedad B · Girona A · and more</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">NEFC / IFA — MLS Next</div>
+                  <div class="cred-sub">Competed in the top youth development league in the United States</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Seacoast United Phantoms — USL2</div>
+                  <div class="cred-sub">Pre-professional experience with one of New England's elite clubs</div>
+                </div>
+              </div>
+
+              <div class="cred-item">
+                <div class="cred-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                </div>
+                <div>
+                  <div class="cred-title">Brookline High School Varsity — State Champion</div>
+                  <div class="cred-sub">Member of the MIAA State Championship-winning team</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="team-cta">
+    <div class="container">
+      <div class="team-cta__content animate-fadeup">
+        <div class="section__label" style="margin-bottom: 14px;">TRAIN WITH THE BEST</div>
+        <h2 class="section__title" style="margin-bottom: 12px;">Ready to Level Up?</h2>
+        <p class="section__desc" style="margin: 0 auto 36px; max-width: 460px;">
+          Your first session is completely free — no commitment, no pressure. Come out and experience the level firsthand.
+        </p>
+        <a href="index.html#signup" class="btn btn--primary btn--lg">Book Your Free Session &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__logo">DANNY<span class="text-accent">.</span></div>
+          <p class="footer__tagline">Elevating the next generation of soccer players through elite, high-intensity training.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4 class="footer__col-title">Quick Links</h4>
+            <ul>
+              <li><a href="index.html#about">About Danny</a></li>
+              <li><a href="index.html#accolades">Accolades</a></li>
+              <li><a href="index.html#services">Training Programs</a></li>
+              <li><a href="index.html#testimonials">Testimonials</a></li>
+              <li><a href="team.html">My Team</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h4 class="footer__col-title">Training</h4>
+            <ul>
+              <li><a href="index.html#signup">Private Sessions</a></li>
+              <li><a href="index.html#signup">Small Groups</a></li>
+              <li><a href="index.html#signup">Book a Session</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 Danny Elite Training. All rights reserved.</p>
+        <p>Built for elite athletes, by an elite athlete.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    const animEls = document.querySelectorAll('.animate-fadeup, .animate-left, .animate-right');
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+    animEls.forEach(el => {
+      if (!el.closest('.team-hero')) observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
