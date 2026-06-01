@@ -587,7 +587,19 @@ img.carousel__media--zoom {
   margin-bottom: 20px;
 }
 .accolade-card__title { font-size: 1.08rem; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
-.accolade-card__desc  { font-size: 0.88rem; color: var(--txt2); line-height: 1.62; }
+.accolade-card__desc  { font-size: 0.88rem; color: var(--txt2); line-height: 1.62; margin-bottom: 16px; }
+
+.accolade-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 0.02em;
+  transition: gap var(--t) var(--ease), opacity var(--t);
+}
+.accolade-card__link:hover { gap: 8px; opacity: 0.8; }
 
 /* === SERVICES ============================================== */
 .services__grid {
