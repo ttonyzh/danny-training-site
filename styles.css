@@ -997,6 +997,116 @@ img.carousel__media--zoom {
   .footer__links        { grid-template-columns: 1fr; }
 }
 
+/* === TEAM CALLOUT ========================================== */
+.team-callout__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.team-callout__desc {
+  font-size: 1rem;
+  color: var(--txt2);
+  line-height: 1.78;
+  margin-bottom: 28px;
+}
+
+.team-callout__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.team-mini-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 22px 20px;
+  transition: border-color var(--t) var(--ease),
+              transform var(--t) var(--ease),
+              box-shadow var(--t) var(--ease);
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.team-mini-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green), transparent);
+  opacity: 0;
+  transition: opacity var(--t);
+}
+
+.team-mini-card:hover {
+  border-color: var(--border-g);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-g);
+}
+
+.team-mini-card:hover::before { opacity: 1; }
+
+.team-mini-card__avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--green), var(--green-dark));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 16px var(--green-glow);
+}
+
+.team-mini-card__name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.team-mini-card__creds {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.team-mini-card__creds span {
+  font-size: 0.77rem;
+  color: var(--txt3);
+  padding-left: 12px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.team-mini-card__creds span::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+@media (max-width: 1024px) {
+  .team-callout__grid  { grid-template-columns: 1fr; gap: 48px; }
+  .team-callout__cards { max-width: 560px; }
+}
+
+@media (max-width: 480px) {
+  .team-callout__cards { grid-template-columns: 1fr; }
+}
+
 /* === REDUCED MOTION ======================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
