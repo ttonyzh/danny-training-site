@@ -327,37 +327,97 @@
   <!-- ===== SIGN UP ===== -->
   <section class="signup section" id="signup">
     <div class="container">
-      <div class="signup__grid">
 
-        <div class="signup__info animate-left">
-          <div class="section__label">GET STARTED</div>
-          <h2 class="section__title">Book Your <span class="text-accent">First Session</span></h2>
-          <p class="signup__desc">
-            Pick a time that works for you and I'll confirm within 24 hours. First session is completely free — no commitment needed. Call or email me if you have any questions before booking.
-          </p>
-          <div class="signup__contact">
-            <div class="contact-item">
-              <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-              <span>Brookline, MA</span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg></span>
-              <span>danny1on1Training@gmail.com</span>
-            </div>
-            <div class="contact-item">
-              <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18C1.6 2.1 2.47 1.19 3.55 1H6.5a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-              <span>617-582-3879</span>
-            </div>
-          </div>
+      <div class="section__header animate-fadeup">
+        <div class="section__label">GET STARTED</div>
+        <h2 class="section__title">Book Your <span class="text-accent">First Session</span></h2>
+        <p class="section__desc">First session is completely free — no commitment needed. Fill out your details, then pick a time that works for you.</p>
+      </div>
+
+      <div class="signup__contact-strip animate-fadeup">
+        <div class="contact-item">
+          <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span>Brookline, MA</span>
         </div>
+        <div class="contact-item">
+          <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg></span>
+          <span>danny1on1Training@gmail.com</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-item__icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18C1.6 2.1 2.47 1.19 3.55 1H6.5a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.82-.82a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span>617-582-3879</span>
+        </div>
+      </div>
 
-        <div class="signup__calendly animate-right">
-          <!-- Calendly inline widget -->
+      <!-- Step 1: Info -->
+      <div class="signup__step animate-fadeup">
+        <div class="signup__step-label">
+          <span class="signup__step-num">01</span>
+          <span>Your Details</span>
+        </div>
+        <div class="signup__form-wrapper">
+          <form class="signup__form" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="2199646e-8bf3-444b-8c51-898bf4202a41">
+            <input type="hidden" name="subject" value="New Training Request — Danny Elite Training">
+            <input type="hidden" name="redirect" value="false">
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">First Name</label>
+                <input type="text" name="first_name" class="form__input" placeholder="John" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Last Name</label>
+                <input type="text" name="last_name" class="form__input" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">Email Address</label>
+                <input type="email" name="email" class="form__input" placeholder="john@example.com" required>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Phone Number</label>
+                <input type="tel" name="phone" class="form__input" placeholder="(555) 123-4567">
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">Player Age</label>
+                <input type="number" name="player_age" class="form__input" placeholder="14" min="6" max="22">
+              </div>
+              <div class="form__group">
+                <label class="form__label">Training Interest</label>
+                <select name="training_interest" class="form__input form__select" required>
+                  <option value="">Select program…</option>
+                  <option>Private Training (1-on-1)</option>
+                  <option>Small Group Session (2–4 players)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Anything else I should know?</label>
+              <textarea name="message" class="form__input form__textarea" placeholder="Goals, position, current team, availability…" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--full btn--lg" id="submitBtn">
+              Next: Pick a Time &rarr;
+            </button>
+            <p class="form__disclaimer">Your info is sent to Danny — then pick a time below.</p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Step 2: Schedule -->
+      <div class="signup__step animate-fadeup" id="calendlyStep">
+        <div class="signup__step-label">
+          <span class="signup__step-num">02</span>
+          <span>Pick a Time</span>
+        </div>
+        <div class="signup__calendly">
           <div class="calendly-inline-widget" data-url="https://calendly.com/danny1on1training?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e"></div>
           <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
-
       </div>
+
     </div>
   </section>
 

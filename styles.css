@@ -868,6 +868,69 @@ img.carousel__media--zoom {
 
 .form__disclaimer { text-align: center; font-size: 0.78rem; color: var(--txt3); }
 
+.signup__step { margin-top: 48px; }
+
+.signup__step-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--txt2);
+}
+
+.signup__step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--green-bg);
+  border: 1px solid var(--border-g);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 52px 24px;
+  gap: 12px;
+}
+
+.form__success-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--green-bg);
+  border: 2px solid var(--border-g);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.form__success-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.form__success-sub {
+  font-size: 0.95rem;
+  color: var(--txt2);
+  max-width: 360px;
+  line-height: 1.6;
+}
+
 /* === FOOTER ================================================ */
 .footer {
   background: var(--bg2);

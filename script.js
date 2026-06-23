@@ -140,7 +140,22 @@ form.addEventListener('submit', async e => {
     const json = await res.json();
 
     if (json.success) {
-      window.location.href = 'thanks.html';
+      // Mark form as complete and scroll to Calendly step
+      const formWrapper = form.closest('.signup__form-wrapper');
+      formWrapper.innerHTML = `
+        <div class="form__success">
+          <div class="form__success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="form__success-title">Details received!</p>
+          <p class="form__success-sub">Now pick a time below — Danny will see your info before your session.</p>
+        </div>`;
+      const calendlyStep = document.getElementById('calendlyStep');
+      if (calendlyStep) {
+        const nav = document.getElementById('nav');
+        const offset = (nav ? nav.offsetHeight : 0) + 24;
+        window.scrollTo({ top: calendlyStep.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+      }
     } else {
       submitBtn.innerHTML = 'Something went wrong — try again';
       submitBtn.disabled  = false;
