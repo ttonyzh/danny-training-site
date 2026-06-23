@@ -333,8 +333,7 @@
           <div class="section__label">GET STARTED</div>
           <h2 class="section__title">Book Your <span class="text-accent">First Session</span></h2>
           <p class="signup__desc">
-            Fill out the form and I'll get back to you within 24 hours to schedule your first session. Let's get to work.
-            Call or email me if you have any questions or want to chat.
+            Pick a time that works for you and I'll confirm within 24 hours. First session is completely free — no commitment needed. Call or email me if you have any questions before booking.
           </p>
           <div class="signup__contact">
             <div class="contact-item">
@@ -352,52 +351,10 @@
           </div>
         </div>
 
-        <div class="signup__form-wrapper animate-right">
-          <form class="signup__form" id="signupForm" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="2199646e-8bf3-444b-8c51-898bf4202a41">
-            <input type="hidden" name="subject" value="New Training Request — Danny Elite Training">
-            <input type="hidden" name="redirect" value="false">
-            <div class="form__row">
-              <div class="form__group">
-                <label class="form__label">First Name</label>
-                <input type="text" name="first_name" class="form__input" placeholder="John" required>
-              </div>
-              <div class="form__group">
-                <label class="form__label">Last Name</label>
-                <input type="text" name="last_name" class="form__input" placeholder="Smith" required>
-              </div>
-            </div>
-            <div class="form__group">
-              <label class="form__label">Email Address</label>
-              <input type="email" name="email" class="form__input" placeholder="john@example.com" required>
-            </div>
-            <div class="form__group">
-              <label class="form__label">Phone Number</label>
-              <input type="tel" name="phone" class="form__input" placeholder="(555) 123-4567">
-            </div>
-            <div class="form__row">
-              <div class="form__group">
-                <label class="form__label">Player Age</label>
-                <input type="number" name="player_age" class="form__input" placeholder="14" min="6" max="22">
-              </div>
-              <div class="form__group">
-                <label class="form__label">Training Interest</label>
-                <select name="training_interest" class="form__input form__select" required>
-                  <option value="">Select program…</option>
-                  <option>Private Training (1-on-1)</option>
-                  <option>Small Group Session (2–4 players)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form__group">
-              <label class="form__label">Anything else I should know?</label>
-              <textarea name="message" class="form__input form__textarea" placeholder="Goals, position, current team, availability…" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn--primary btn--full btn--lg" id="submitBtn">
-              Send My Request &rarr;
-            </button>
-            <p class="form__disclaimer">I'll respond within 24 hours.</p>
-          </form>
+        <div class="signup__calendly animate-right">
+          <!-- Calendly inline widget -->
+          <div class="calendly-inline-widget" data-url="https://calendly.com/danny1on1training?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e"></div>
+          <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
       </div>

@@ -808,6 +808,18 @@ img.carousel__media--zoom {
   padding: 40px;
 }
 
+.signup__calendly {
+  border-radius: var(--rl);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  min-height: 660px;
+}
+
+.signup__calendly .calendly-inline-widget {
+  min-width: 280px;
+  height: 660px;
+}
+
 .signup__form { display: flex; flex-direction: column; gap: 18px; }
 
 .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
