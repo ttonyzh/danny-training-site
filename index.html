@@ -483,7 +483,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
     (function () {
-      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.326, -71.162], 13);
+      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.322, -71.153], 13);
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
@@ -498,16 +498,16 @@
       });
 
       var fields = [
-        { name: 'Downes Field',                lat: 42.3307, lng: -71.1491 },
-        { name: 'Brookline High School Field', lat: 42.3321, lng: -71.1281 },
-        { name: 'The Park School',             lat: 42.3248, lng: -71.1405 },
-        { name: 'Newton South Field',          lat: 42.3177, lng: -71.1996 }
+        { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',  lat: 42.3248696, lng: -71.1184854 },
+        { name: 'Brookline High School Field', address: '115 Greenough St, Brookline, MA 02445', lat: 42.3312588, lng: -71.1262643 },
+        { name: 'The Park School',             address: '171 Goddard Ave, Brookline, MA 02445',  lat: 42.3163183, lng: -71.1366620 },
+        { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',     lat: 42.3132195, lng: -71.1874152 }
       ];
 
       fields.forEach(function (f) {
         L.marker([f.lat, f.lng], { icon: greenIcon })
           .addTo(map)
-          .bindPopup('<strong>' + f.name + '</strong><br>Training available here');
+          .bindPopup('<strong>' + f.name + '</strong><br><span style="color:#94A3B8;font-size:0.82rem">' + f.address + '</span>');
       });
     })();
   </script>
