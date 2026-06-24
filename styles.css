@@ -853,6 +853,102 @@ img.carousel__media--zoom {
 }
 .contact-item__link:hover { color: var(--green); }
 
+/* Right column wrapper */
+.signup__right {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Trainer selector */
+.trainer-selector__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--txt3);
+  margin-bottom: 10px;
+}
+
+.trainer-selector__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.trainer-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+
+.trainer-option:hover {
+  border-color: rgba(34,197,94,0.5);
+  background: rgba(34,197,94,0.03);
+}
+
+.trainer-option--active {
+  border-color: var(--green);
+  background: var(--green-bg);
+}
+
+.trainer-option__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg2);
+  border: 1.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--txt2);
+  flex-shrink: 0;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.trainer-option--active .trainer-option__avatar {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+
+.trainer-option__info { flex: 1; min-width: 0; }
+
+.trainer-option__name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trainer-option__role {
+  font-size: 0.72rem;
+  color: var(--txt3);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.trainer-option__check {
+  color: var(--green);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.trainer-option--active .trainer-option__check { opacity: 1; }
+
 /* Unified booking card */
 .signup__card {
   background: var(--card);
@@ -1324,6 +1420,7 @@ img.carousel__media--zoom {
   .form__row                 { grid-template-columns: 1fr; }
   .signup__form-wrapper      { padding: 20px; }
   .signup__tabs              { padding: 0 20px; }
+  .trainer-selector__grid    { grid-template-columns: 1fr; }
 
   .footer__links        { grid-template-columns: 1fr 1fr; }
   .footer__bottom       { flex-direction: column; text-align: center; }

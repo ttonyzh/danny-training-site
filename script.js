@@ -113,6 +113,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// === TRAINER SELECTION ===
+document.querySelectorAll('.trainer-option').forEach(function (option) {
+  option.addEventListener('click', function () {
+    document.querySelectorAll('.trainer-option').forEach(function (o) {
+      o.classList.remove('trainer-option--active');
+    });
+    option.classList.add('trainer-option--active');
+    const trainerInput = document.getElementById('selectedTrainer');
+    if (trainerInput) trainerInput.value = option.dataset.trainer;
+  });
+});
+
 // === FORM SUBMISSION ===
 const form      = document.getElementById('signupForm');
 const submitBtn = document.getElementById('submitBtn');
@@ -140,22 +152,46 @@ form.addEventListener('submit', async e => {
     const json = await res.json();
 
     if (json.success) {
+      // Get selected trainer info
+      const activeOption  = document.querySelector('.trainer-option.trainer-option--active');
+      const trainerName   = activeOption ? activeOption.dataset.trainer   : 'Danny';
+      const calendlyUrl   = activeOption ? activeOption.dataset.calendly  : '';
+
+      // Update step 2 sub-text with trainer name
+      const step2Sub = document.getElementById('step2Sub');
+      if (step2Sub) step2Sub.textContent = 'Choose a date and time below to lock in your free first session with ' + trainerName + '.';
+
       // Hide the form — confirmation is in the Step 2 header
       const formWrapper = form.closest('.signup__form-wrapper');
       formWrapper.style.display = 'none';
+
       // Flip step tabs
       const stepTab1 = document.getElementById('stepTab1');
       const stepTab2 = document.getElementById('stepTab2');
       if (stepTab1) stepTab1.classList.remove('signup__tab--active');
       if (stepTab2) stepTab2.classList.add('signup__tab--active');
 
-      // Expand card to full width by collapsing the info panel
+      // Expand card to full width
       const layout = document.querySelector('.signup__layout');
       if (layout) layout.classList.add('signup__layout--wide');
 
       const calendlyStep = document.getElementById('calendlyStep');
       if (calendlyStep) {
         calendlyStep.classList.remove('signup__step--hidden');
+
+        // Inject Calendly for the selected trainer
+        function launchCalendly() {
+          if (typeof Calendly !== 'undefined' && calendlyUrl) {
+            Calendly.initInlineWidget({
+              url: calendlyUrl,
+              parentElement: document.getElementById('calendlyContainer')
+            });
+          } else if (calendlyUrl) {
+            setTimeout(launchCalendly, 150);
+          }
+        }
+        launchCalendly();
+
         setTimeout(function () {
           const navEl = document.getElementById('nav');
           const offset = (navEl ? navEl.offsetHeight : 0) + 24;
