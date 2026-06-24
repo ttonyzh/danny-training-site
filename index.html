@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
 </head>
 <body>
 
@@ -324,6 +325,24 @@
     </div>
   </section>
 
+  <!-- ===== TRAINING LOCATIONS ===== -->
+  <section class="section" id="locations">
+    <div class="container">
+      <div class="section__header animate-fadeup">
+        <div class="section__label">TRAINING LOCATIONS</div>
+        <h2 class="section__title">Fields Across <span class="text-accent">Brookline & Newton</span></h2>
+        <p class="section__desc">Sessions take place at quality fields across the area — convenient to you.</p>
+      </div>
+      <div class="map-wrapper animate-fadeup">
+        <div id="trainingMap"></div>
+        <div class="map-legend">
+          <span class="map-legend__dot"></span>
+          <span>Training Field</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SIGN UP ===== -->
   <section class="signup section" id="signup">
     <div class="container">
@@ -406,8 +425,8 @@
         </div>
       </div>
 
-      <!-- Step 2: Schedule -->
-      <div class="signup__step animate-fadeup" id="calendlyStep">
+      <!-- Step 2: Schedule — revealed after form submission -->
+      <div class="signup__step signup__step--hidden" id="calendlyStep">
         <div class="signup__step-label">
           <span class="signup__step-num">02</span>
           <span>Pick a Time</span>
@@ -461,5 +480,37 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script>
+    (function () {
+      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.334, -71.162], 13);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      var greenIcon = L.divIcon({
+        className: '',
+        html: '<div class="map-marker"></div>',
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+
+      var fields = [
+        { name: 'Larz Anderson Park',   lat: 42.3225, lng: -71.1228 },
+        { name: 'Amory Playground',      lat: 42.3292, lng: -71.1384 },
+        { name: 'Griggs Park',           lat: 42.3442, lng: -71.1307 },
+        { name: 'Cold Springs Park',     lat: 42.3148, lng: -71.2022 },
+        { name: 'Edmands Park',          lat: 42.3337, lng: -71.2044 }
+      ];
+
+      fields.forEach(function (f) {
+        L.marker([f.lat, f.lng], { icon: greenIcon })
+          .addTo(map)
+          .bindPopup('<strong>' + f.name + '</strong><br>Training available here');
+      });
+    })();
+  </script>
 </body>
 </html>

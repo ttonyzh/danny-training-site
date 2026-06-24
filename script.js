@@ -152,9 +152,13 @@ form.addEventListener('submit', async e => {
         </div>`;
       const calendlyStep = document.getElementById('calendlyStep');
       if (calendlyStep) {
-        const nav = document.getElementById('nav');
-        const offset = (nav ? nav.offsetHeight : 0) + 24;
-        window.scrollTo({ top: calendlyStep.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+        calendlyStep.classList.remove('signup__step--hidden');
+        // Small delay so the element is visible before scrolling
+        setTimeout(function () {
+          const navEl = document.getElementById('nav');
+          const offset = (navEl ? navEl.offsetHeight : 0) + 24;
+          window.scrollTo({ top: calendlyStep.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+        }, 80);
       }
     } else {
       submitBtn.innerHTML = 'Something went wrong — try again';
