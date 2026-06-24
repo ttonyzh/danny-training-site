@@ -791,6 +791,15 @@ img.carousel__media--zoom {
 .signup__info {
   position: sticky;
   top: 96px;
+  transition: opacity 0.3s ease;
+}
+
+.signup__layout--wide {
+  grid-template-columns: 1fr;
+}
+
+.signup__layout--wide .signup__info {
+  display: none;
 }
 
 .signup__info-title {

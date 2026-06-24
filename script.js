@@ -149,6 +149,10 @@ form.addEventListener('submit', async e => {
       if (stepTab1) stepTab1.classList.remove('signup__tab--active');
       if (stepTab2) stepTab2.classList.add('signup__tab--active');
 
+      // Expand card to full width by collapsing the info panel
+      const layout = document.querySelector('.signup__layout');
+      if (layout) layout.classList.add('signup__layout--wide');
+
       const calendlyStep = document.getElementById('calendlyStep');
       if (calendlyStep) {
         calendlyStep.classList.remove('signup__step--hidden');
