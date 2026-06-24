@@ -890,14 +890,14 @@ img.carousel__media--zoom {
 .leaflet-control-attribution a { color: var(--txt2) !important; }
 
 .leaflet-popup-content-wrapper {
-  background: var(--card) !important;
-  border: 1px solid var(--border-g) !important;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4) !important;
+  background: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18) !important;
   border-radius: 8px !important;
-  color: var(--txt) !important;
+  color: #1E293B !important;
 }
-.leaflet-popup-tip { background: var(--card) !important; }
-.leaflet-popup-content strong { color: var(--green); }
+.leaflet-popup-tip { background: #fff !important; }
+.leaflet-popup-content strong { color: #15803D; }
 
 /* Custom green dot marker */
 .map-marker {
