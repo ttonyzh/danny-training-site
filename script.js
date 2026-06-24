@@ -182,9 +182,11 @@ form.addEventListener('submit', async e => {
         // Inject Calendly for the selected trainer
         function launchCalendly() {
           if (typeof Calendly !== 'undefined' && calendlyUrl) {
+            const container = document.getElementById('calendlyContainer');
             Calendly.initInlineWidget({
               url: calendlyUrl,
-              parentElement: document.getElementById('calendlyContainer')
+              parentElement: container,
+              resize: true
             });
           } else if (calendlyUrl) {
             setTimeout(launchCalendly, 150);

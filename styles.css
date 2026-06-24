@@ -1070,12 +1070,21 @@ img.carousel__media--zoom {
 }
 
 .signup__calendly {
-  min-height: 720px;
+  width: 100%;
+  height: 720px;
 }
 
 .signup__calendly .calendly-inline-widget {
-  min-width: 280px;
-  height: 720px;
+  width: 100% !important;
+  height: 720px !important;
+  min-width: unset !important;
+}
+
+.signup__calendly iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+  display: block;
 }
 
 .signup__form { display: flex; flex-direction: column; gap: 18px; }
