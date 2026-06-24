@@ -150,10 +150,15 @@ form.addEventListener('submit', async e => {
           <p class="form__success-title">Details received!</p>
           <p class="form__success-sub">Now pick a time below — Danny will see your info before your session.</p>
         </div>`;
+      // Flip step tabs
+      const stepTab1 = document.getElementById('stepTab1');
+      const stepTab2 = document.getElementById('stepTab2');
+      if (stepTab1) stepTab1.classList.remove('signup__tab--active');
+      if (stepTab2) stepTab2.classList.add('signup__tab--active');
+
       const calendlyStep = document.getElementById('calendlyStep');
       if (calendlyStep) {
         calendlyStep.classList.remove('signup__step--hidden');
-        // Small delay so the element is visible before scrolling
         setTimeout(function () {
           const navEl = document.getElementById('nav');
           const offset = (navEl ? navEl.offsetHeight : 0) + 24;
