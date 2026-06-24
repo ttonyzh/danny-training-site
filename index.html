@@ -483,7 +483,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
     (function () {
-      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.322, -71.153], 13);
+      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.322, -71.170], 12);
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
@@ -501,7 +501,8 @@
         { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',  lat: 42.3248696, lng: -71.1184854 },
         { name: 'Brookline High School Field', address: '115 Greenough St, Brookline, MA 02445', lat: 42.3312588, lng: -71.1262643 },
         { name: 'The Park School',             address: '171 Goddard Ave, Brookline, MA 02445',  lat: 42.3163183, lng: -71.1366620 },
-        { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',     lat: 42.3132195, lng: -71.1874152 }
+        { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',       lat: 42.3132195, lng: -71.1874152 },
+        { name: 'Warren-Lincoln Playground',   address: '29 Montclair Rd, Waban, MA 02468',        lat: 42.3295088, lng: -71.2280627 }
       ];
 
       fields.forEach(function (f) {
