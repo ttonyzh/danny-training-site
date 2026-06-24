@@ -483,7 +483,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
     (function () {
-      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.334, -71.162], 13);
+      var map = L.map('trainingMap', { zoomControl: true, scrollWheelZoom: false }).setView([42.326, -71.162], 13);
 
       L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
@@ -498,11 +498,10 @@
       });
 
       var fields = [
-        { name: 'Larz Anderson Park',   lat: 42.3225, lng: -71.1228 },
-        { name: 'Amory Playground',      lat: 42.3292, lng: -71.1384 },
-        { name: 'Griggs Park',           lat: 42.3442, lng: -71.1307 },
-        { name: 'Cold Springs Park',     lat: 42.3148, lng: -71.2022 },
-        { name: 'Edmands Park',          lat: 42.3337, lng: -71.2044 }
+        { name: 'Downes Field',                lat: 42.3307, lng: -71.1491 },
+        { name: 'Brookline High School Field', lat: 42.3321, lng: -71.1281 },
+        { name: 'The Park School',             lat: 42.3248, lng: -71.1405 },
+        { name: 'Newton South Field',          lat: 42.3177, lng: -71.1996 }
       ];
 
       fields.forEach(function (f) {
