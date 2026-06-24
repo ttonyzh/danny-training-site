@@ -927,7 +927,7 @@ img.carousel__media--zoom {
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 20px 28px;
+  padding: 18px 28px;
   border-bottom: 1px solid var(--border-g);
   background: var(--green-bg);
 }
@@ -944,6 +944,8 @@ img.carousel__media--zoom {
   flex-shrink: 0;
 }
 
+.signup__step2-text { flex: 1; }
+
 .signup__step2-title {
   font-size: 0.95rem;
   font-weight: 700;
@@ -954,6 +956,21 @@ img.carousel__media--zoom {
   font-size: 0.84rem;
   color: var(--txt2);
   line-height: 1.5;
+}
+
+.signup__step2-duration {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(34,197,94,0.12);
+  border: 1px solid var(--border-g);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .signup__calendly {
