@@ -18,7 +18,7 @@
 var GITHUB_OWNER = 'ttonyzh';
 var GITHUB_REPO  = 'danny-training-site';
 var GITHUB_BRANCH = 'main';
-var OWNER_EMAIL  = 'ttonyzh@gmail.com';
+var OWNER_EMAIL  = 'danny1on1training@gmail.com';
 
 // ── STEP 1: Create the form ──────────────────────────────────
 function createTrainerForm() {
