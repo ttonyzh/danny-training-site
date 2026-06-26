@@ -49,7 +49,7 @@ var TRAINERS = [
     name: 'Elias',
     role: 'USL2 · D1',
     showOnTeamPage: true,
-    photo: 'brand_assets/elias.jpg',
+    photo: 'brand_assets/elias.png',
     calendly: 'https://calendly.com/danny1on1training-elias/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
     tags: ['USL2', 'D1 Soccer', 'MLS Next'],
     credentials: [
