@@ -107,9 +107,12 @@ function createTrainerForm() {
   form.addSectionHeaderItem()
     .setTitle('Profile Photo');
 
-  form.addFileUploadItem()
-    .setTitle('Profile Photo')
-    .setHelpText('Upload a clear, well-lit photo of yourself — action or training shot preferred. JPG or PNG only.')
+  form.addParagraphTextItem()
+    .setTitle('Profile Photo — Google Drive Link')
+    .setHelpText(
+      'Upload your photo to Google Drive, right-click it → "Share" → set to "Anyone with the link can view" → paste the link here. ' +
+      'Use a clear, well-lit photo (action or training shot preferred). JPG or PNG only.'
+    )
     .setRequired(true);
 
   // ── Section 5: Training Locations ────────────────────────
@@ -185,7 +188,7 @@ function onTrainerSubmit(e) {
     var teams       = data['Teams Played For / Currently Playing'] || '';
     var accolades   = data['Accolades & Achievements'] || '';
     var specialties = data['Training Specialties'] || [];
-    var photoUrls   = data['Profile Photo'] || [];
+    var photoLink   = data['Profile Photo — Google Drive Link'] || '';
 
     // Collect training fields (up to 8)
     var locations = [];
@@ -198,15 +201,27 @@ function onTrainerSubmit(e) {
       }
     });
 
-    // Upload profile photo to GitHub from form file upload
-    var photoPath = '';
-    var photoUrl  = Array.isArray(photoUrls) ? photoUrls[0] : photoUrls;
-    if (photoUrl) {
-      var fileId = extractDriveId(photoUrl);
-      if (fileId) {
-        var fileName = slugify(name) + '.jpg';
-        photoPath    = 'brand_assets/' + fileName;
-        uploadPhotoToGitHub(fileId, photoPath);
+    // Upload profile photo — handles both file upload (array of Drive IDs) and Drive link (string)
+    var photoPath     = '';
+    var photoResponse = data['Profile Photo'] || data['Profile Photo — Google Drive Link'] || '';
+    var driveFileId   = null;
+
+    if (Array.isArray(photoResponse) && photoResponse.length > 0) {
+      driveFileId = photoResponse[0];
+    } else if (typeof photoResponse === 'string' && photoResponse.trim()) {
+      driveFileId = extractDriveId(photoResponse.trim());
+    }
+
+    if (driveFileId) {
+      var fileName = slugify(name) + '.jpg';
+      photoPath    = 'brand_assets/' + fileName;
+      uploadPhotoToGitHub(driveFileId, photoPath);
+      // Delete from Drive after upload to keep storage free
+      try {
+        DriveApp.getFileById(driveFileId).setTrashed(true);
+        Logger.log('🗑️ Deleted Drive file after GitHub upload: ' + driveFileId);
+      } catch (deleteErr) {
+        Logger.log('⚠️ Could not delete Drive file (non-fatal): ' + deleteErr.message);
       }
     }
 
@@ -307,8 +322,11 @@ function appendTrainerToGitHub(trainerString, trainerName) {
   var sha = res.sha;
 
   // Insert before the closing ]; of the TRAINERS array
-  var insertPoint = currentContent.lastIndexOf('];');
-  if (insertPoint === -1) throw new Error('Could not find ]; in trainers.js');
+  // Use TRAINER_ICONS as a landmark to avoid matching ]; inside function bodies
+  var iconsIdx = currentContent.indexOf('var TRAINER_ICONS');
+  if (iconsIdx === -1) throw new Error('Could not find TRAINER_ICONS marker in trainers.js');
+  var insertPoint = currentContent.lastIndexOf('];', iconsIdx);
+  if (insertPoint === -1) throw new Error('Could not find ]; before TRAINER_ICONS in trainers.js');
 
   var newContent = currentContent.slice(0, insertPoint) + ',\n' + trainerString + '\n' + currentContent.slice(insertPoint);
   var encoded    = Utilities.base64Encode(Utilities.newBlob(newContent).getBytes());
