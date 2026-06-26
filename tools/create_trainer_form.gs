@@ -112,13 +112,13 @@ function createTrainerForm() {
   form.addSectionHeaderItem()
     .setTitle('Profile Photo');
 
-  form.addFileUploadItem()
-    .setTitle('Profile Photo')
+  form.addParagraphTextItem()
+    .setTitle('Profile Photo — Google Drive Link')
     .setHelpText(
-      'Upload a clear, well-lit photo of yourself — ideally action or training shot. ' +
-      'JPG or PNG. This appears on your trainer card on the website.'
+      'Upload your photo to Google Drive, right-click it → "Share" → set to "Anyone with the link can view" → paste the link here. ' +
+      'Use a clear, well-lit photo (action or training shot preferred). JPG or PNG only. ' +
+      'This appears on your trainer card on the website.'
     )
-    .setAllowedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
     .setRequired(true);
 
   // ── Section 5: Training Locations ────────────────────────
@@ -194,7 +194,7 @@ function onTrainerSubmit(e) {
     var teams       = data['Teams Played For / Currently Playing'] || '';
     var accolades   = data['Accolades & Achievements'] || '';
     var specialties = data['Training Specialties'] || [];
-    var photoUrls   = data['Profile Photo'] || [];
+    var photoLink   = data['Profile Photo — Google Drive Link'] || '';
 
     // Collect training fields (up to 8)
     var locations = [];
@@ -207,13 +207,15 @@ function onTrainerSubmit(e) {
       }
     });
 
-    // Upload profile photo to GitHub
+    // Upload profile photo to GitHub from Drive share link
     var photoPath = '';
-    if (photoUrls && photoUrls.length > 0) {
-      var fileId   = extractDriveId(photoUrls[0]);
-      var fileName = slugify(name) + '.jpg';
-      photoPath    = 'brand_assets/' + fileName;
-      uploadPhotoToGitHub(fileId, photoPath);
+    if (photoLink) {
+      var fileId = extractDriveId(photoLink);
+      if (fileId) {
+        var fileName = slugify(name) + '.jpg';
+        photoPath    = 'brand_assets/' + fileName;
+        uploadPhotoToGitHub(fileId, photoPath);
+      }
     }
 
     // Build credential objects from accolade lines
