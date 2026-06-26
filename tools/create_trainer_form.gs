@@ -107,13 +107,9 @@ function createTrainerForm() {
   form.addSectionHeaderItem()
     .setTitle('Profile Photo');
 
-  form.addParagraphTextItem()
-    .setTitle('Profile Photo — Google Drive Link')
-    .setHelpText(
-      'Upload your photo to Google Drive, right-click it → "Share" → set to "Anyone with the link can view" → paste the link here. ' +
-      'Use a clear, well-lit photo (action or training shot preferred). JPG or PNG only. ' +
-      'This appears on your trainer card on the website.'
-    )
+  form.addFileUploadItem()
+    .setTitle('Profile Photo')
+    .setHelpText('Upload a clear, well-lit photo of yourself — action or training shot preferred. JPG or PNG only.')
     .setRequired(true);
 
   // ── Section 5: Training Locations ────────────────────────
@@ -189,7 +185,7 @@ function onTrainerSubmit(e) {
     var teams       = data['Teams Played For / Currently Playing'] || '';
     var accolades   = data['Accolades & Achievements'] || '';
     var specialties = data['Training Specialties'] || [];
-    var photoLink   = data['Profile Photo — Google Drive Link'] || '';
+    var photoUrls   = data['Profile Photo'] || [];
 
     // Collect training fields (up to 8)
     var locations = [];
@@ -202,10 +198,11 @@ function onTrainerSubmit(e) {
       }
     });
 
-    // Upload profile photo to GitHub from Drive share link
+    // Upload profile photo to GitHub from form file upload
     var photoPath = '';
-    if (photoLink) {
-      var fileId = extractDriveId(photoLink);
+    var photoUrl  = Array.isArray(photoUrls) ? photoUrls[0] : photoUrls;
+    if (photoUrl) {
+      var fileId = extractDriveId(photoUrl);
       if (fileId) {
         var fileName = slugify(name) + '.jpg';
         photoPath    = 'brand_assets/' + fileName;
