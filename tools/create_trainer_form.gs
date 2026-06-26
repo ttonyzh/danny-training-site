@@ -360,7 +360,7 @@ function buildTrainerString(t) {
   }).join(',\n') + '\n    ]';
 
   var locsStr = '[\n' + t.locations.map(function(l) {
-    return '      // TODO: fill in lat/lng for map marker\n      { name: ' + JSON.stringify(l.name) + ', address: ' + JSON.stringify(l.address) + ', lat: 0, lng: 0 }';
+    return '      { name: ' + JSON.stringify(l.name) + ', address: ' + JSON.stringify(l.address) + ', lat: ' + l.lat + ', lng: ' + l.lng + ' }';
   }).join(',\n') + '\n    ]';
 
   return [
