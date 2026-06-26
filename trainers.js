@@ -64,6 +64,26 @@ var TRAINERS = [
       { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',          lat: 42.3132195, lng: -71.1874152 }
     ]
   }
+,
+  {
+    id: "tony",
+    name: "Tony Zhang",
+    role: "Elite",
+    showOnTeamPage: true,
+    photo: "brand_assets/tony-zhang.jpg",
+    calendly: "https://calendly.com/danny1on1training-tony/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e",
+    tags: ["Elite"],
+    credentials: [
+      { icon: "shield", title: "asdasd", sub: "" }
+    ],
+    locations: [
+      { name: "Harry Downes Field", address: "24 Highland Rd, Brookline, MA 02445", lat: 42.3248696, lng: -71.1184854 },
+      { name: "Harry Downes Field", address: "24 Highland Rd, Brookline, MA 02445", lat: 42.3248696, lng: -71.1184854 },
+      { name: "Harry Downes Field", address: "24 Highland Rd, Brookline, MA 02445", lat: 42.3248696, lng: -71.1184854 },
+      { name: "Harry Downes Field", address: "24 Highland Rd, Brookline, MA 02445", lat: 42.3248696, lng: -71.1184854 },
+      { name: "Harry Downes Field", address: "24 Highland Rd, Brookline, MA 02445", lat: 42.3248696, lng: -71.1184854 }
+    ]
+  }
 ];
 
 var TRAINER_ICONS = {
