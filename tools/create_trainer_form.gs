@@ -48,11 +48,6 @@ function createTrainerForm() {
     .setHelpText('For Danny to reach you directly.')
     .setRequired(true);
 
-  form.addTextItem()
-    .setTitle('Email Address')
-    .setHelpText('Confirmation and communications will go here.')
-    .setRequired(true);
-
   form.addParagraphTextItem()
     .setTitle('Short Bio')
     .setHelpText(
@@ -188,7 +183,7 @@ function onTrainerSubmit(e) {
     });
 
     var name        = (data['Full Name'] || '').trim();
-    var email       = data['Email Address'] || resp.getRespondentEmail() || '';
+    var email       = resp.getRespondentEmail() || '';
     var phone       = data['Phone Number'] || '';
     var bio         = data['Short Bio'] || '';
     var teams       = data['Teams Played For / Currently Playing'] || '';
