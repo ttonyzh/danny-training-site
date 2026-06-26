@@ -229,14 +229,14 @@ function onTrainerSubmit(e) {
       };
     });
 
-    // Build location objects (geocoding not available here — lat/lng TBD)
-    // Tony will need to fill in lat/lng for the map markers
+    // Geocode each address automatically
     var locationObjs = locations.map(function(loc) {
+      var coords = geocodeAddress(loc.address);
       return {
         name:    loc.name,
         address: loc.address,
-        lat:     0,
-        lng:     0
+        lat:     coords.lat,
+        lng:     coords.lng
       };
     });
 
@@ -385,23 +385,24 @@ function sendNotificationEmail(name, email, phone, calendlySlug, locations, bio,
   var subject = '🟢 New Trainer Profile Published: ' + name;
 
   var locationList = locations.map(function(l, i) {
-    return (i + 1) + '. ' + l.name + '\n   ' + l.address + '\n   ⚠️ TODO: Find lat/lng and update trainers.js';
+    var hasCoords = l.lat !== 0 && l.lng !== 0;
+    return (i + 1) + '. ' + l.name + '\n   ' + l.address +
+      (hasCoords ? '\n   ✅ Coordinates: ' + l.lat + ', ' + l.lng : '\n   ⚠️ Could not geocode — add lat/lng manually in trainers.js');
   }).join('\n\n');
 
   var body = [
     name + '\'s profile has been automatically added to trainers.js and pushed to the live site.',
+    'Map coordinates were looked up automatically.',
     '',
     '══ ACTION REQUIRED ══════════════════════════════',
     '',
-    '1. CREATE CALENDLY ACCOUNT',
+    'CREATE CALENDLY ACCOUNT',
     '   Email: danny1on1training+' + calendlySlug.replace('danny1on1training-', '') + '@gmail.com',
     '   Username: ' + calendlySlug,
     '   Connect their Google Calendar in Calendly settings.',
     '   Then update their calendly URL in trainers.js.',
     '',
-    '2. ADD MAP COORDINATES',
-    '   Look up each field on Google Maps, grab the lat/lng from the URL,',
-    '   and update their locations array in trainers.js:',
+    '── Training Fields (auto-geocoded) ──────────────',
     '',
     locationList,
     '',
@@ -425,6 +426,22 @@ function sendNotificationEmail(name, email, phone, calendlySlug, locations, bio,
   ].join('\n');
 
   MailApp.sendEmail(OWNER_EMAIL, subject, body);
+}
+
+
+// ── Geocoding ─────────────────────────────────────────────────
+
+function geocodeAddress(address) {
+  try {
+    var result = Maps.newGeocoder().geocode(address);
+    if (result.status === 'OK' && result.results.length > 0) {
+      var loc = result.results[0].geometry.location;
+      return { lat: loc.lat, lng: loc.lng };
+    }
+  } catch (err) {
+    Logger.log('Geocoding failed for: ' + address + ' — ' + err.message);
+  }
+  return { lat: 0, lng: 0 };
 }
 
 
