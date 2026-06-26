@@ -204,7 +204,7 @@
           <span class="accolade-card__icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </span>
-          <h3 class="accolade-card__title">MLS Next Elite</h3>
+          <h3 class="accolade-card__title">MLS Next</h3>
           <p class="accolade-card__desc">Competed with Intercontinental Football Academy in MLS Next — the top youth development league in the United States.</p>
           <a href="https://www.mlssoccer.com/mlsnext/" target="_blank" rel="noopener noreferrer" class="accolade-card__link">Learn More <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></a>
         </div>
@@ -331,9 +331,10 @@
     <div class="container">
       <div class="section__header animate-fadeup">
         <div class="section__label">TRAINING LOCATIONS</div>
-        <h2 class="section__title">Fields Across <span class="text-accent">Brookline & Newton</span></h2>
+        <h2 class="section__title">Where We <span class="text-accent">Train</span></h2>
         <p class="section__desc">Sessions take place at quality fields across the area — convenient to you.</p>
       </div>
+      <div id="mapTrainerTabs" class="map-trainer-tabs animate-fadeup"></div>
       <div class="map-wrapper animate-fadeup">
         <div id="trainingMap"></div>
         <div class="map-legend">
@@ -385,45 +386,7 @@
           <!-- Trainer selector -->
           <div class="trainer-selector">
             <p class="trainer-selector__label">Who do you want to train with?</p>
-            <div class="trainer-selector__grid">
-
-              <div class="trainer-option trainer-option--active" data-trainer="Danny"
-                   data-calendly="https://calendly.com/danny1on1training?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e">
-                <div class="trainer-option__avatar">D</div>
-                <div class="trainer-option__info">
-                  <p class="trainer-option__name">Danny</p>
-                  <p class="trainer-option__role">Head Trainer</p>
-                </div>
-                <div class="trainer-option__check">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-              </div>
-
-              <div class="trainer-option" data-trainer="Bobby"
-                   data-calendly="https://calendly.com/danny1on1training-bobby/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e">
-                <div class="trainer-option__avatar">B</div>
-                <div class="trainer-option__info">
-                  <p class="trainer-option__name">Bobby</p>
-                  <p class="trainer-option__role">MLS Next · D1</p>
-                </div>
-                <div class="trainer-option__check">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-              </div>
-
-              <div class="trainer-option" data-trainer="Elias"
-                   data-calendly="https://calendly.com/danny1on1training-elias/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e">
-                <div class="trainer-option__avatar">E</div>
-                <div class="trainer-option__info">
-                  <p class="trainer-option__name">Elias</p>
-                  <p class="trainer-option__role">USL2 · D1</p>
-                </div>
-                <div class="trainer-option__check">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                </div>
-              </div>
-
-            </div>
+            <div class="trainer-selector__grid" id="trainerSelectorGrid"></div>
           </div>
 
           <!-- Booking card -->
@@ -559,6 +522,8 @@
     </div>
   </footer>
 
+  <script src="trainers.js"></script>
+  <script>renderTrainerSelector('trainerSelectorGrid');</script>
   <script src="script.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
   <script>
@@ -577,20 +542,44 @@
         iconAnchor: [9, 9]
       });
 
-      var fields = [
-        { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',  lat: 42.3248696, lng: -71.1184854 },
-        { name: 'Brookline High School Field', address: '115 Greenough St, Brookline, MA 02445', lat: 42.3312588, lng: -71.1262643 },
-        { name: 'The Park School',             address: '171 Goddard Ave, Brookline, MA 02445',  lat: 42.3163183, lng: -71.1366620 },
-        { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',       lat: 42.3132195, lng: -71.1874152 },
-        { name: 'Warren-Lincoln Playground',   address: '29 Montclair Rd, Waban, MA 02468',        lat: 42.3295088, lng: -71.2280627 },
-        { name: 'Coolidge Corner School',      address: '345 Harvard St, Brookline, MA 02446',     lat: 42.3449239, lng: -71.1236747 }
-      ];
+      var activeMarkers = [];
 
-      fields.forEach(function (f) {
-        L.marker([f.lat, f.lng], { icon: greenIcon })
-          .addTo(map)
-          .bindPopup('<strong>' + f.name + '</strong><br><span style="color:#64748B;font-size:0.82rem">' + f.address + '</span>');
+      function showLocations(trainer) {
+        activeMarkers.forEach(function(m) { m.remove(); });
+        activeMarkers = [];
+        var locs = trainer.locations || [];
+        locs.forEach(function(f) {
+          var m = L.marker([f.lat, f.lng], { icon: greenIcon })
+            .addTo(map)
+            .bindPopup('<strong>' + f.name + '</strong><br><span style="color:#64748B;font-size:0.82rem">' + f.address + '</span>');
+          activeMarkers.push(m);
+        });
+        if (activeMarkers.length > 0) {
+          var group = L.featureGroup(activeMarkers);
+          map.fitBounds(group.getBounds().pad(0.25));
+        }
+      }
+
+      // Render map trainer tabs
+      var tabContainer = document.getElementById('mapTrainerTabs');
+      TRAINERS.forEach(function(t, i) {
+        var btn = document.createElement('button');
+        btn.className = 'map-trainer-tab' + (i === 0 ? ' active' : '');
+        btn.dataset.trainerId = t.id;
+        btn.textContent = t.name;
+        tabContainer.appendChild(btn);
       });
+
+      tabContainer.addEventListener('click', function(e) {
+        var tab = e.target.closest('.map-trainer-tab');
+        if (!tab) return;
+        tabContainer.querySelectorAll('.map-trainer-tab').forEach(function(t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+        var trainer = TRAINERS.find(function(t) { return t.id === tab.dataset.trainerId; });
+        if (trainer) showLocations(trainer);
+      });
+
+      showLocations(TRAINERS[0]);
     })();
   </script>
 </body>

@@ -1136,6 +1136,37 @@ img.carousel__media--zoom {
 .form__disclaimer { text-align: center; font-size: 0.78rem; color: var(--txt3); }
 
 /* === TRAINING LOCATIONS MAP ================================ */
+.map-trainer-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.map-trainer-tab {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--txt2);
+  cursor: pointer;
+  transition: border-color var(--t) var(--ease), color var(--t) var(--ease), background var(--t) var(--ease);
+}
+
+.map-trainer-tab:hover {
+  border-color: var(--border-g);
+  color: var(--txt);
+}
+
+.map-trainer-tab.active {
+  background: var(--green-bg);
+  border-color: var(--border-g);
+  color: var(--green);
+}
+
 .map-wrapper {
   border-radius: var(--rl);
   overflow: hidden;

@@ -114,15 +114,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // === TRAINER SELECTION ===
-document.querySelectorAll('.trainer-option').forEach(function (option) {
-  option.addEventListener('click', function () {
-    document.querySelectorAll('.trainer-option').forEach(function (o) {
-      o.classList.remove('trainer-option--active');
-    });
-    option.classList.add('trainer-option--active');
-    const trainerInput = document.getElementById('selectedTrainer');
-    if (trainerInput) trainerInput.value = option.dataset.trainer;
+document.addEventListener('click', function(e) {
+  const option = e.target.closest('.trainer-option');
+  if (!option) return;
+  document.querySelectorAll('.trainer-option').forEach(function(o) {
+    o.classList.remove('trainer-option--active');
   });
+  option.classList.add('trainer-option--active');
+  const trainerInput = document.getElementById('selectedTrainer');
+  if (trainerInput) trainerInput.value = option.dataset.trainer;
 });
 
 // === FORM SUBMISSION ===
