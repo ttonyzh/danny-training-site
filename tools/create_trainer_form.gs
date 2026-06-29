@@ -226,13 +226,13 @@ function onTrainerSubmit(e) {
     }
 
     // Build credential objects from accolade lines
-    var credIcons   = ['shield', 'globe', 'graduation', 'trophy', 'star'];
+    var credIcons   = ['trophy', 'graduation', 'shield', 'globe', 'star'];
     var credLines   = accolades.split('\n').map(function(l) { return l.replace(/^[•\-*]\s*/, '').trim(); }).filter(Boolean);
     var credentials = credLines.map(function(line, i) {
       return {
-        icon:  credIcons[i % credIcons.length],
+        icon:  autoCredIcon(line, i, credIcons),
         title: line,
-        sub:   ''
+        sub:   autoCredSub(line)
       };
     });
 
@@ -436,6 +436,33 @@ function sendNotificationEmail(name, email, phone, calendlySlug, locations, bio,
   ].join('\n');
 
   MailApp.sendEmail(OWNER_EMAIL, subject, body);
+}
+
+
+// ── Credential auto-fill ──────────────────────────────────────
+
+function autoCredIcon(title, index, icons) {
+  var t = title.toLowerCase();
+  if (t.match(/usl|pro|professional/))           return 'trophy';
+  if (t.match(/university|college|ncaa|d1|d2/))  return 'graduation';
+  if (t.match(/mls next|academy|club|united/))   return 'shield';
+  if (t.match(/national team|international/))    return 'globe';
+  if (t.match(/varsity|high school|mvp|award/))  return 'star';
+  return icons[index % icons.length];
+}
+
+function autoCredSub(title) {
+  var t = title.toLowerCase();
+  if (t.match(/usl2/))                           return 'Pre-professional playing experience at a top regional level';
+  if (t.match(/usl/))                            return 'Professional-level playing experience';
+  if (t.match(/mls next/))                       return 'Competed in the top youth development league in the United States';
+  if (t.match(/national team/))                  return 'Internationally selected to represent at the national level';
+  if (t.match(/d1|division i|ncaa d1/))          return 'Competing at the highest level of collegiate soccer';
+  if (t.match(/d2|division ii/))                 return 'Competing at an elite level of collegiate soccer';
+  if (t.match(/university|college/))             return 'Competing at the collegiate level of soccer';
+  if (t.match(/varsity/))                        return 'Varsity-level high school soccer experience';
+  if (t.match(/academy/))                        return 'Training in a top professional academy environment';
+  return '';
 }
 
 

@@ -26,31 +26,12 @@ var TRAINERS = [
     ]
   },
   {
-    id: 'Bobby',
-    name: 'Bobby',
-    role: 'MLS Next · D1',
-    showOnTeamPage: true,
-    photo: '',
-    calendly: 'https://calendly.com/danny1on1training-bobby/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
-    tags: ['MLS Next', 'National Team', 'D1 Recruit'],
-    credentials: [
-      { icon: 'shield',     title: 'Seacoast United U17 — MLS Next',    sub: "Starter for one of New England's top youth programs in the nation's premier development league" },
-      { icon: 'globe',      title: 'Bulgaria U17 Youth National Team',   sub: 'Internationally selected to represent Bulgaria at the highest youth international level' },
-      { icon: 'graduation', title: 'Multiple Top D1 Official Visits',    sub: 'Recruited by and visiting elite NCAA Division I programs across the country' }
-    ],
-    locations: [
-      // Update with Bobby's actual training locations
-      { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',       lat: 42.3248696, lng: -71.1184854 },
-      { name: 'Brookline High School Field', address: '115 Greenough St, Brookline, MA 02445',      lat: 42.3312588, lng: -71.1262643 }
-    ]
-  },
-  {
     id: 'Elias',
     name: 'Elias',
     role: 'USL2 · D1',
     showOnTeamPage: true,
     photo: 'brand_assets/elias.png',
-    calendly: 'https://calendly.com/danny1on1training-elias/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
+    calendly: 'https://calendly.com/eliasnovina/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
     tags: ['USL2', 'D1 Soccer', 'MLS Next'],
     credentials: [
       { icon: 'trophy',     title: 'Seacoast United Phantoms — USL2',         sub: "Pre-professional experience with one of New England's premier clubs" },
