@@ -40,9 +40,10 @@ var TRAINERS = [
       { icon: 'star',       title: 'Boston College High School — 4 Years Varsity', sub: "Four-year varsity starter at one of New England's top high school programs" }
     ],
     locations: [
-      // Update with Elias's actual training locations
-      { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',       lat: 42.3248696, lng: -71.1184854 },
-      { name: 'Newton South Field',          address: '140 Brandeis Rd, Newton, MA 02459',          lat: 42.3132195, lng: -71.1874152 }
+      { name: 'Newton South High School',    address: '140 Brandeis Rd, Newton, MA 02459',          lat: 42.3132195, lng: -71.1874152 },
+      { name: 'Newton North High School',    address: '457 Walnut St, Newton, MA 02460',            lat: 42.3454372, lng: -71.2075842 },
+      { name: 'Warren-Lincoln Playground',   address: '29 Montclair Rd, Waban, MA 02468',           lat: 42.3295088, lng: -71.2280627 },
+      { name: 'Brookline High School',       address: '115 Greenough St, Brookline, MA 02445',      lat: 42.3312588, lng: -71.1262643 }
     ]
   }
 ];
