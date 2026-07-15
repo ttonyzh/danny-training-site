@@ -13,7 +13,7 @@ var TRAINERS = [
     defaultSelected: true,
     showOnTeamPage: false,
     photo: '',
-    calendly: 'https://calendly.com/danny1on1training?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
+    calendly: 'https://cal.com/danny-dokov-xsobet',
     tags: [],
     credentials: [],
     locations: [
