@@ -31,7 +31,7 @@ var TRAINERS = [
     role: 'USL2 · D1',
     showOnTeamPage: true,
     photo: 'brand_assets/elias.png',
-    calendly: 'https://calendly.com/eliasnovina/30min?hide_gdpr_banner=1&background_color=1e293b&text_color=f8fafc&primary_color=22c55e',
+    calendly: 'https://cal.com/elias-novina-7uyqsz',
     tags: ['USL2', 'D1 Soccer', 'MLS Next'],
     credentials: [
       { icon: 'trophy',     title: 'Seacoast United Phantoms — USL2',         sub: "Pre-professional experience with one of New England's premier clubs" },

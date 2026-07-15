@@ -181,15 +181,34 @@ form.addEventListener('submit', async e => {
 
         // Inject Calendly for the selected trainer
         function launchCalendly() {
-          if (typeof Calendly !== 'undefined' && calendlyUrl) {
-            const container = document.getElementById('calendlyContainer');
-            Calendly.initInlineWidget({
-              url: calendlyUrl,
-              parentElement: container,
-              resize: true
-            });
-          } else if (calendlyUrl) {
-            setTimeout(launchCalendly, 150);
+          const container = document.getElementById('calendlyContainer');
+          container.innerHTML = '';
+          if (!calendlyUrl) return;
+
+          if (calendlyUrl.includes('cal.com')) {
+            const calLink = calendlyUrl.replace(/^https?:\/\/cal\.com\//, '');
+            if (typeof Cal !== 'undefined') {
+              Cal("inline", {
+                elementOrSelector: container,
+                calLink: calLink,
+              });
+              Cal("ui", {
+                theme: "dark",
+                styles: { branding: { brandColor: "#22C55E" } },
+              });
+            } else {
+              setTimeout(launchCalendly, 150);
+            }
+          } else {
+            if (typeof Calendly !== 'undefined') {
+              Calendly.initInlineWidget({
+                url: calendlyUrl,
+                parentElement: container,
+                resize: true
+              });
+            } else {
+              setTimeout(launchCalendly, 150);
+            }
           }
         }
         launchCalendly();
