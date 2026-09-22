@@ -1,5 +1,7 @@
 # Danny Elite Training
 
+[![CI](https://github.com/ttonyzh/danny-training-site/actions/workflows/ci.yml/badge.svg)](https://github.com/ttonyzh/danny-training-site/actions/workflows/ci.yml)
+
 Website for a youth/competitive soccer training business run by me and a small team of D1, USL2, and MLS Next athletes. Static site, live at [trainwithdanny.org](https://trainwithdanny.org).
 
 ## Features
