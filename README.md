@@ -32,11 +32,12 @@ Website for a youth/competitive soccer training business run by Danny and a smal
 
 ## Tech stack
 
-Plain HTML/CSS/JS — no build step or framework.
+The site itself is plain HTML/CSS/JS — no build step or framework. It's paired with a small serverless backend for signups.
 
 - **Leaflet.js** — training locations map
 - **Calendly** and **Cal.com** embed widgets — booking
-- **Web3Forms** — signup form backend/email delivery
+- **Web3Forms** — signup form email delivery
+- **Vercel serverless function + Supabase (Postgres)** — persists every signup to a database (see [Signups database](#signups-database))
 - **Google Apps Script + Google Forms** — trainer onboarding automation, pushing to this repo through the GitHub REST API
 - Hosted as a static site with a custom domain (see `CNAME`)
 
@@ -49,11 +50,28 @@ thanks.html     Post-signup confirmation page
 trainers.js     Source of truth for all trainer data (rendered into index.html & team.html)
 script.js       Carousel, nav, form submission, trainer selection, scroll animations
 styles.css      Site styling
+api/
+  signup.js     Vercel serverless function — validates + inserts signups into Supabase
+supabase/
+  schema.sql    One-time SQL to create the `signups` table
 tools/
   create_trainer_form.gs   Google Apps Script: trainer intake form + auto-publish pipeline
 brand_assets/   Logos, photos, and video clips used across the site
 CNAME           Custom domain for GitHub Pages
 ```
+
+## Signups database
+
+Every signup submitted through the homepage form is saved to a Supabase Postgres table (`signups`), independent of the Web3Forms email — one setup doesn't depend on the other.
+
+**One-time setup:**
+1. Create a free [Supabase](https://supabase.com) project, then run `supabase/schema.sql` in its SQL editor to create the `signups` table.
+2. Copy the project's URL and **service role key** (Project Settings → API).
+3. Create a free [Vercel](https://vercel.com) project linked to this GitHub repo. In its dashboard, add environment variables `SUPABASE_URL` and `SUPABASE_SERVICE_KEY` with the values from step 2, then deploy.
+4. Copy the deployed function's URL and paste it into `SIGNUP_API_URL` near the top of the form-submission section in `script.js`.
+5. Commit and push — GitHub Pages serves the updated `script.js`.
+
+The function lives at `api/signup.js` and does its own server-side validation and CORS handling (only `https://trainwithdanny.org` is allowed to call it). If the database call fails for any reason, the signup form still works exactly as before — the Supabase write is best-effort and never blocks the Web3Forms → Calendly booking flow.
 
 ## Adding a new trainer
 

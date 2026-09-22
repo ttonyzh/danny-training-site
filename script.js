@@ -129,6 +129,9 @@ document.addEventListener('click', function(e) {
 const form      = document.getElementById('signupForm');
 const submitBtn = document.getElementById('submitBtn');
 
+// Vercel function that persists signups to Supabase, replace with your deployed URL
+const SIGNUP_API_URL = 'https://danny-training-site-fkid.vercel.app/api/signup';
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
 
@@ -146,6 +149,14 @@ form.addEventListener('submit', async e => {
   submitBtn.disabled  = true;
 
   const data = new FormData(form);
+
+  // Best-effort save to our own database — never blocks or breaks the
+  // Web3Forms → Calendly flow below if it fails or the endpoint isn't set up yet.
+  fetch(SIGNUP_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(Object.fromEntries(data)),
+  }).catch(() => {});
 
   try {
     const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
