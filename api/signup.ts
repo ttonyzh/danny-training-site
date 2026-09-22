@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
+import { createRateLimiter } from '../lib/rateLimit';
 
 const supabase = createClient(
   process.env.SUPABASE_URL as string,
@@ -7,6 +8,15 @@ const supabase = createClient(
 );
 
 const ALLOWED_ORIGIN = 'https://trainwithdanny.org';
+
+// 5 signups per 10 minutes per IP — generous for a real visitor, tight enough to blunt spam/scripted abuse
+const isRateLimited = createRateLimiter({ windowMs: 10 * 60 * 1000, max: 5 });
+
+function getClientIp(req: VercelRequest): string {
+  const forwarded = req.headers['x-forwarded-for'];
+  const first = Array.isArray(forwarded) ? forwarded[0] : forwarded;
+  return first?.split(',')[0]?.trim() || req.socket?.remoteAddress || 'unknown';
+}
 
 interface SignupBody {
   first_name: string;
@@ -33,6 +43,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method !== 'POST') {
     res.status(405).json({ success: false, error: 'Method not allowed' });
+    return;
+  }
+
+  if (isRateLimited(getClientIp(req))) {
+    res.status(429).json({ success: false, error: 'Too many requests — please try again later.' });
     return;
   }
 

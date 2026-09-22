@@ -22,8 +22,17 @@ function createRes() {
   return res as VercelResponse & { statusCode?: number; body?: any };
 }
 
+// Each test uses its own fake IP so they don't trip each other's rate limit —
+// the limiter lives at module scope and persists for the life of this test file.
+let ipCounter = 0;
 function createReq(overrides: Partial<VercelRequest> = {}): VercelRequest {
-  return { method: 'POST', body: {}, ...overrides } as VercelRequest;
+  ipCounter += 1;
+  return {
+    method: 'POST',
+    body: {},
+    headers: { 'x-forwarded-for': `10.0.0.${ipCounter}` },
+    ...overrides,
+  } as VercelRequest;
 }
 
 const validBody = {
@@ -118,5 +127,22 @@ describe('api/signup handler', () => {
 
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.body.error).toBe('connection refused');
+  });
+
+  it('rate-limits a single IP after 5 requests within the window', async () => {
+    insertMock.mockResolvedValue({ error: null });
+    const headers = { 'x-forwarded-for': '198.51.100.1' };
+
+    for (let i = 0; i < 5; i++) {
+      const res = createRes();
+      await handler(createReq({ body: validBody, headers }), res);
+      expect(res.status).toHaveBeenCalledWith(200);
+    }
+
+    const sixthRes = createRes();
+    await handler(createReq({ body: validBody, headers }), sixthRes);
+
+    expect(sixthRes.status).toHaveBeenCalledWith(429);
+    expect(insertMock).toHaveBeenCalledTimes(5); // the 6th request never reached the database
   });
 });
