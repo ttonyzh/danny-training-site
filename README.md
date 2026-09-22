@@ -30,6 +30,25 @@ Website for a youth/competitive soccer training business run by me and a small t
 - Scroll-triggered fade/slide-in animations throughout via `IntersectionObserver`.
 - Dedicated "Request Sent" confirmation page (`thanks.html`) with direct contact info as a fallback.
 
+## Architecture
+
+```
+Visitor's browser
+      │
+      ├──► index.html / script.js / styles.css   (GitHub Pages, static)
+      │
+      ├──► Web3Forms API           (email → Danny)
+      ├──► Calendly / Cal.com      (booking widget)
+      │
+      └──► Vercel: api/signup.ts   (serverless function)
+                  │
+                  └──► Supabase Postgres: `signups` table
+```
+
+The frontend is intentionally kept as plain, dependency-free HTML/CSS/JS served straight from GitHub Pages — there's no build step, no framework, and nothing that can break between "edit a file" and "it's live." The one piece that needed real server-side logic (persisting signups) is split out into its own small Vercel function rather than bolted onto the static site, so it can be deployed, versioned, and reasoned about independently. That function is also the only part of the system with write access to the database — the browser never talks to Supabase directly, and the service-role key never leaves the server.
+
+The signup save is deliberately **best-effort and non-blocking**: the existing Web3Forms → Calendly booking flow doesn't wait on it or depend on its result. If Supabase or Vercel ever go down, visitors can still book a session exactly as before — the database write is additive logging, not a dependency the core user flow relies on.
+
 ## Tech stack
 
 The site itself is plain HTML/CSS/JS — no build step or framework. It's paired with a small serverless backend for signups.

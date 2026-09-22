@@ -1,14 +1,27 @@
-const { createClient } = require('@supabase/supabase-js');
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
+  process.env.SUPABASE_URL as string,
+  process.env.SUPABASE_SERVICE_KEY as string
 );
 
 const ALLOWED_ORIGIN = 'https://trainwithdanny.org';
-const REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'training_interest'];
 
-module.exports = async (req, res) => {
+interface SignupBody {
+  first_name: string;
+  last_name: string;
+  email: string;
+  training_interest: string;
+  phone?: string;
+  player_age?: string | number;
+  message?: string;
+  trainer?: string;
+}
+
+const REQUIRED_FIELDS: (keyof SignupBody)[] = ['first_name', 'last_name', 'email', 'training_interest'];
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -23,7 +36,7 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const body = req.body || {};
+  const body = (req.body || {}) as Partial<SignupBody>;
   const missing = REQUIRED_FIELDS.filter(field => !String(body[field] || '').trim());
   if (missing.length) {
     res.status(400).json({ success: false, error: `Missing required field(s): ${missing.join(', ')}` });
@@ -47,4 +60,4 @@ module.exports = async (req, res) => {
   }
 
   res.status(200).json({ success: true });
-};
+}
