@@ -11,11 +11,15 @@ var TRAINERS = [
     name: 'Danny',
     role: 'Head Trainer',
     defaultSelected: true,
-    showOnTeamPage: false,
-    photo: '',
+    showOnTeamPage: true,
+    photo: 'brand_assets/crop.webp',
     calendly: 'https://cal.com/danny-dokov-xsobet',
-    tags: [],
-    credentials: [],
+    tags: ['USL2', 'D1 Soccer'],
+    credentials: [
+      { icon: 'trophy',     title: 'Seacoast United Phantoms — USL2',       sub: "Pre-professional experience with one of New England's premier clubs" },
+      { icon: 'graduation', title: 'Temple University — NCAA D1 Soccer',    sub: 'Competed at the highest level of collegiate soccer' },
+      { icon: 'graduation', title: 'Sacred Heart University — NCAA D1 Soccer', sub: 'Transferring for the upcoming season, continuing Division I competition' }
+    ],
     locations: [
       { name: 'Harry Downes Field',          address: '24 Highland Rd, Brookline, MA 02445',       lat: 42.3248696, lng: -71.1184854 },
       { name: 'Brookline High School Field', address: '115 Greenough St, Brookline, MA 02445',      lat: 42.3312588, lng: -71.1262643 },
