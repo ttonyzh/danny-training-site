@@ -12,7 +12,7 @@ var TRAINERS = [
     role: 'Head Trainer',
     defaultSelected: true,
     showOnTeamPage: true,
-    photo: 'brand_assets/crop.webp',
+    photo: 'brand_assets/danny_card.webp',
     calendly: 'https://cal.com/danny-dokov-xsobet',
     tags: ['USL2', 'D1 Soccer'],
     credentials: [
